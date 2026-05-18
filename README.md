@@ -16,15 +16,6 @@ Run the development server:
 fastapi dev app/main.py
 ```
 
-## Configuration
-
-The app is configured with environment variables:
-
-| Variable | Default | Description |
-| --- | --- | --- |
-| `SITE_URL` | `https://your-domain.com` | Public site URL used for canonical URLs, social metadata, robots.txt, and sitemap.xml. |
-| `MAX_UPLOAD_SIZE_MB` | `50` | Maximum uploaded image size in megabytes. |
-
 ## Docker
 
 Build the image:
@@ -38,6 +29,15 @@ Run the container:
 ```sh
 docker run --rm -p 8000:8000 -e SITE_URL=https://your-domain.com image-converter
 ```
+
+## Configuration
+
+The app is configured with environment variables:
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `SITE_URL` | `https://your-domain.com` | Public site URL used for canonical URLs, social metadata, robots.txt, and sitemap.xml. |
+| `MAX_UPLOAD_SIZE_MB` | `50` | Maximum uploaded image size in megabytes. |
 
 ## Asset Generation
 
