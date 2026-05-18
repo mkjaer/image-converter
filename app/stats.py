@@ -1,11 +1,13 @@
 import sqlite3
 from pathlib import Path
 
+DATABASE_TIMEOUT_SECONDS = 5
+
 
 def initialize_stats_database(database_path: Path) -> None:
     database_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with sqlite3.connect(database_path) as connection:
+    with sqlite3.connect(database_path, timeout=DATABASE_TIMEOUT_SECONDS) as connection:
         connection.execute(
             """
             CREATE TABLE IF NOT EXISTS conversion_stats (
@@ -31,7 +33,7 @@ def increment_conversion_count(
     input_format: str,
     output_format: str,
 ) -> None:
-    with sqlite3.connect(database_path) as connection:
+    with sqlite3.connect(database_path, timeout=DATABASE_TIMEOUT_SECONDS) as connection:
         connection.execute(
             """
             INSERT INTO conversion_stats (input_format, output_format, count)
@@ -61,7 +63,7 @@ def increment_failure_detail_count(
 
 
 def increment_counter(database_path: Path, name: str) -> None:
-    with sqlite3.connect(database_path) as connection:
+    with sqlite3.connect(database_path, timeout=DATABASE_TIMEOUT_SECONDS) as connection:
         connection.execute(
             """
             INSERT INTO counters (name, count)
@@ -74,7 +76,7 @@ def increment_counter(database_path: Path, name: str) -> None:
 
 
 def get_counter(database_path: Path, name: str) -> int:
-    with sqlite3.connect(database_path) as connection:
+    with sqlite3.connect(database_path, timeout=DATABASE_TIMEOUT_SECONDS) as connection:
         row = connection.execute(
             """
             SELECT count
@@ -91,7 +93,7 @@ def get_counter(database_path: Path, name: str) -> int:
 
 
 def get_conversion_stats(database_path: Path) -> dict:
-    with sqlite3.connect(database_path) as connection:
+    with sqlite3.connect(database_path, timeout=DATABASE_TIMEOUT_SECONDS) as connection:
         connection.row_factory = sqlite3.Row
         rows = connection.execute(
             """
@@ -143,7 +145,7 @@ def get_conversion_stats(database_path: Path) -> dict:
 
 
 def get_counter_group(database_path: Path, prefix: str) -> dict:
-    with sqlite3.connect(database_path) as connection:
+    with sqlite3.connect(database_path, timeout=DATABASE_TIMEOUT_SECONDS) as connection:
         rows = connection.execute(
             """
             SELECT name, count

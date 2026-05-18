@@ -59,6 +59,11 @@ async def index(request: Request):
     return render_index(request, HOME_PAGE)
 
 
+@app.get("/health/")
+async def health():
+    return {"status": "ok"}
+
+
 @app.get("/formats/")
 async def get_supported_formats():
     return get_image_formats()

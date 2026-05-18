@@ -5,7 +5,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 from fastapi import HTTPException
-from PIL import Image, UnidentifiedImageError
+from PIL import Image, ImageOps, UnidentifiedImageError
 from pillow_heif import register_heif_opener
 
 register_heif_opener()
@@ -46,6 +46,7 @@ def convert_image(contents: bytes, output_format: OutputFormat) -> ConvertedImag
     try:
         image = Image.open(io.BytesIO(contents))
         input_format = image.format or "UNKNOWN"
+        image = ImageOps.exif_transpose(image)
 
         if output_format == OutputFormat.jpg:
             # JPEG does not support transparency
