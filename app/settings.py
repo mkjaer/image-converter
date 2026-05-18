@@ -9,3 +9,5 @@ SITE_PAGES_PATH = SITE_DIR / "content/site-pages.json"
 
 SITE_URL = environ.get("SITE_URL", "https://your-domain.com").rstrip("/")
 MAX_UPLOAD_SIZE_MB = int(environ.get("MAX_UPLOAD_SIZE_MB", "50"))
+DATABASE_DIR = Path(environ.get("DATABASE_DIR", PROJECT_ROOT / "data"))
+DATABASE_PATH = DATABASE_DIR / "stats.sqlite"

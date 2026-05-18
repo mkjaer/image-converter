@@ -3,6 +3,7 @@ import io
 from fastapi import HTTPException, UploadFile
 
 READ_CHUNK_SIZE = 1024 * 1024
+FILE_TOO_LARGE_ERROR = "file_too_large"
 
 
 async def read_upload_file(
@@ -20,6 +21,7 @@ async def read_upload_file(
             raise HTTPException(
                 status_code=413,
                 detail=f"Uploaded file is too large. Maximum size is {max_size_mb} MB.",
+                headers={"X-Error-Code": FILE_TOO_LARGE_ERROR},
             )
 
         contents.write(chunk)

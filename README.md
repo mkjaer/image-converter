@@ -27,8 +27,12 @@ docker build -t image-converter .
 Run the container:
 
 ```sh
-docker run --rm -p 8000:8000 -e SITE_URL=https://your-domain.com image-converter
+docker run --rm -p 8000:8000 -e SITE_URL=https://your-domain.com -v image-converter-data:/data image-converter
 ```
+
+## API documentation
+
+API documentation can be found at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ## Configuration
 
@@ -38,6 +42,7 @@ The app is configured with environment variables:
 | --- | --- | --- |
 | `SITE_URL` | `https://your-domain.com` | Public site URL used for canonical URLs, social metadata, robots.txt, and sitemap.xml. |
 | `MAX_UPLOAD_SIZE_MB` | `50` | Maximum uploaded image size in megabytes. |
+| `DATABASE_DIR` | `data` | Directory where `stats.sqlite` is stored for aggregate conversion statistics. |
 
 ## Asset Generation
 

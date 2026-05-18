@@ -10,6 +10,8 @@ from pillow_heif import register_heif_opener
 
 register_heif_opener()
 
+INVALID_IMAGE_ERROR = "invalid_image"
+
 
 class OutputFormat(str, Enum):
     jpg = "jpg"
@@ -33,6 +35,7 @@ SUPPORTED_FORMATS = {
 @dataclass(frozen=True)
 class ConvertedImage:
     contents: io.BytesIO
+    input_format: str
     media_type: str
     extension: str
 
@@ -42,6 +45,7 @@ def convert_image(contents: bytes, output_format: OutputFormat) -> ConvertedImag
 
     try:
         image = Image.open(io.BytesIO(contents))
+        input_format = image.format or "UNKNOWN"
 
         if output_format == OutputFormat.jpg:
             # JPEG does not support transparency
@@ -55,10 +59,12 @@ def convert_image(contents: bytes, output_format: OutputFormat) -> ConvertedImag
         raise HTTPException(
             status_code=400,
             detail="Uploaded file is not a valid image",
+            headers={"X-Error-Code": INVALID_IMAGE_ERROR},
         )
 
     return ConvertedImage(
         contents=output,
+        input_format=input_format,
         media_type=config["media_type"],
         extension=config["extension"],
     )
