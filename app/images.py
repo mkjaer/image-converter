@@ -56,7 +56,7 @@ def convert_image(contents: bytes, output_format: OutputFormat) -> ConvertedImag
         image.save(output, format=config["pillow_format"])
         output.seek(0)
 
-    except UnidentifiedImageError:
+    except (OSError, UnidentifiedImageError):
         raise HTTPException(
             status_code=400,
             detail="Uploaded file is not a valid image",
