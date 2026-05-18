@@ -1,0 +1,5 @@
+fastapi[standard]
+python-multipart
+Pillow
+pillow-heif
+jinja2

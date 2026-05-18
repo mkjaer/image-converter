@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.meta_description }}">
+  <link rel="canonical" href="{{ page_url }}">
+  <meta property="og:title" content="{{ page.social_title }}">
+  <meta property="og:description" content="{{ page.social_description }}">
+  <meta property="og:image" content="{{ site_url }}/static/generated/social-media-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page_url }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.social_title }}">
+  <meta name="twitter:description" content="{{ page.social_description }}">
+  <meta name="twitter:image" content="{{ site_url }}/static/generated/social-media-preview.png">
+
+  <title>{{ page.title }}</title>
+
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/static/generated/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/static/generated/apple-touch-icon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": {{ page.social_title|tojson }},
+    "url": {{ page_url|tojson }},
+    "description": {{ page.social_description|tojson }},
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <h1>{{ page.h1 }}</h1>
+
+      <p class="subtitle">
+        {{ page.subtitle }}
+      </p>
+
+      <section class="card">
+        <form action="/convert/" method="post" enctype="multipart/form-data" target="_blank">
+          <div class="upload-box" id="uploadBox">
+            <strong>Choose an image</strong>
+
+            <span id="fileName">
+              Drag an image here, or click to browse
+            </span>
+
+            <input id="fileInput" type="file" name="file" accept="image/*" required>
+          </div>
+
+          <div class="row">
+            <label>
+              Convert to
+              <select name="format">
+                <option value="jpg" {% if page.default_format == "jpg" %}selected{% endif %}>JPG</option>
+                <option value="png" {% if page.default_format == "png" %}selected{% endif %}>PNG</option>
+              </select>
+            </label>
+
+            <button type="submit">Convert image</button>
+          </div>
+        </form>
+      </section>
+
+      <div class="features">
+        <div class="feature">No account needed</div>
+        <div class="feature">Images are not saved</div>
+        <div class="feature" title="Also supports formats like AVIF, JPEG, PNG, GIF, BMP, TIFF, ICO, PSD and more">Supports WebP, HEIC & more</div>
+      </div>
+
+      <nav class="popular-links" aria-label="Popular conversions">
+        <span>Popular:</span>
+        <a href="/webp-to-jpg/">WebP to JPG</a>
+        <a href="/heic-to-jpg/">HEIC to JPG</a>
+        <a href="/webp-to-png/">WebP to PNG</a>
+        <a href="/heic-to-png/">HEIC to PNG</a>
+      </nav>
+    </div>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

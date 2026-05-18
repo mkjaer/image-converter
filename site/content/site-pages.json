@@ -1,0 +1,49 @@
+{
+  "home": {
+    "title": "Free Online Image Converter - Convert Images to JPG or PNG",
+    "meta_description": "Convert WebP, HEIC and many other image formats to JPG or PNG online. Fast, simple image conversion with no account needed.",
+    "social_title": "Free Online Image Converter",
+    "social_description": "Convert WebP, HEIC, AVIF, JPEG, PNG, GIF, TIFF and other image formats to JPG or PNG online.",
+    "h1": "Convert images quickly",
+    "subtitle": "Upload an image and download a JPG or PNG in seconds",
+    "default_format": "jpg"
+  },
+  "conversion_pages": {
+    "webp-to-jpg": {
+      "title": "Convert WebP to JPG Online - Free Image Converter",
+      "meta_description": "Convert WebP images to JPG online. Fast, simple image conversion with no account needed.",
+      "social_title": "Convert WebP to JPG Online",
+      "social_description": "Convert WebP images to JPG online. Fast, simple conversion with no account needed.",
+      "h1": "Convert WebP to JPG",
+      "subtitle": "Upload a WebP image and download a JPG in seconds",
+      "default_format": "jpg"
+    },
+    "webp-to-png": {
+      "title": "Convert WebP to PNG Online - Free Image Converter",
+      "meta_description": "Convert WebP images to PNG online. Fast, simple image conversion with no account needed.",
+      "social_title": "Convert WebP to PNG Online",
+      "social_description": "Convert WebP images to PNG online. Fast, simple conversion with no account needed.",
+      "h1": "Convert WebP to PNG",
+      "subtitle": "Upload a WebP image and download a PNG in seconds",
+      "default_format": "png"
+    },
+    "heic-to-jpg": {
+      "title": "Convert HEIC to JPG Online - Free Image Converter",
+      "meta_description": "Convert HEIC photos to JPG online. Fast, simple image conversion with no account needed.",
+      "social_title": "Convert HEIC to JPG Online",
+      "social_description": "Convert HEIC photos to JPG online. Fast, simple conversion with no account needed.",
+      "h1": "Convert HEIC to JPG",
+      "subtitle": "Upload a HEIC image and download a JPG in seconds",
+      "default_format": "jpg"
+    },
+    "heic-to-png": {
+      "title": "Convert HEIC to PNG Online - Free Image Converter",
+      "meta_description": "Convert HEIC photos to PNG online. Fast, simple image conversion with no account needed.",
+      "social_title": "Convert HEIC to PNG Online",
+      "social_description": "Convert HEIC photos to PNG online. Fast, simple conversion with no account needed.",
+      "h1": "Convert HEIC to PNG",
+      "subtitle": "Upload a HEIC image and download a PNG in seconds",
+      "default_format": "png"
+    }
+  }
+}
