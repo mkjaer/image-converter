@@ -2,6 +2,7 @@ import io
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
+from urllib.parse import quote
 
 from fastapi import HTTPException
 from PIL import Image, UnidentifiedImageError
@@ -75,3 +76,19 @@ def get_image_formats() -> dict:
         "input_formats": sorted(Image.OPEN.keys()),
         "output_formats": [format.value for format in OutputFormat],
     }
+
+
+def content_disposition_inline(filename: str) -> str:
+    ascii_fallback = (
+        filename
+        .encode("ascii", "ignore")
+        .decode("ascii")
+        .replace('"', "")
+    ) or "download"
+
+    utf8_filename = quote(filename, safe="")
+
+    return (
+        f'inline; filename="{ascii_fallback}"; '
+        f"filename*=UTF-8''{utf8_filename}"
+    )

@@ -3,7 +3,7 @@ from fastapi.responses import Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from app.images import OutputFormat, convert_image, get_image_formats, get_output_filename
+from app.images import OutputFormat, convert_image, get_image_formats, get_output_filename, content_disposition_inline
 from app.pages import CONVERSION_PAGES, HOME_PAGE
 from app.settings import MAX_UPLOAD_SIZE_MB, SITE_URL, STATIC_DIR, TEMPLATES_DIR
 from app.uploads import read_upload_file
@@ -88,6 +88,6 @@ async def convert_file(
         converted_image.contents,
         media_type=converted_image.media_type,
         headers={
-            "Content-Disposition": f'inline; filename="{filename}"'
+            "Content-Disposition": content_disposition_inline(filename)
         },
     )
